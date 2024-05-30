@@ -51,7 +51,7 @@ static copy_comments()
 		// Create the header
 		fprintf(hFile, "// Auto reconstructed from vtable block @ 0x%08X\n// from \"%s\", modified by Scrasa\n// Don't forget to update the return type to the correct type and check if it dumped too much!\n", pAddress, GetInputFile());
 		
-        fprintf(hFile, "class %s \n{\n", szInputClass);
+        fprintf(hFile, "class %s \n{\npublic:\n", szInputClass);
 
 		/* For linux, skip the first entry */
 		if (Dword(pAddress) == 0)
