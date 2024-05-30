@@ -49,7 +49,7 @@ static copy_comments()
 		BadHits = 0;
 
 		// Create the header
-		fprintf(hFile, "// Auto reconstructed from vtable block @ 0x%08X\n// from \"%s\", modified by Scrasa\n// Don't forget to update the return type to the correct type and check if it dumped too much!", pAddress, GetInputFile());
+		fprintf(hFile, "// Auto reconstructed from vtable block @ 0x%08X\n// from \"%s\", modified by Scrasa\n// Don't forget to update the return type to the correct type and check if it dumped too much!\n", pAddress, GetInputFile());
 		
         fprintf(hFile, "class %s \n{\n", szInputClass);
 
