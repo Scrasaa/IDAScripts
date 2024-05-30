@@ -3,6 +3,7 @@
 //Don't forget to update the return type to the correct type and check if it dumped too much!
 class CEngineClient 
 {
+public:
 /*0*/ virtual void* 	GetIntersectingSurfaces(model_t const*,Vector const&,float,bool,SurfInfo *,int) = 0;
 /*1*/ virtual void* 	GetLightForPoint(Vector const&,bool) = 0;
 /*2*/ virtual void* 	TraceLineMaterialAndLighting(Vector const&,Vector const&,Vector&,Vector&) = 0;
