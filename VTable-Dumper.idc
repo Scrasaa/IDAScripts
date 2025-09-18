@@ -1,14 +1,12 @@
-
 // *****************************************************************************
 // - IDA Pro script 
 // Name: VTable-Dumper.idc
 // Desc: Dumps a .h file with the current VTable as a C class
 // 
-// Ver: 3.0 - May 30th, 2024 by Scrasa
+// Ver: 3.1 - Modified to remove memcpy dependency for IDA Free 9.2 by Scrasa
 // -----------------------------------------------------------------------------
 
 #include <idc.idc>
-#include <memcpy.idc>
 
 static copy_comments()
 {
@@ -60,7 +58,7 @@ static copy_comments()
 		}
 
 		pAddress = pAddress + (skipAmt * 4);
-		iIndex = 0; // Initialize index
+		iIndex = 0;
 
 		// Loop through the vtable block
 		while (pAddress != BADADDR)
@@ -86,14 +84,10 @@ static copy_comments()
 			}
 
 			auto found = strstr(szFullName, "::");
-			if (found)
+			if (found != -1)
 			{
-				// Found
-				auto buffer;
-				// work around because idc is gay
-				memcpy(buffer, szFullName, strlen(szFullName));
-				auto pos = found - buffer;
-				szFullName = substr(szFullName, pos+2, strlen(szFullName));
+				// Just take everything after the "::"
+				szFullName = substr(szFullName, found + 2, strlen(szFullName));
 			}
 
 			// Comment out the index numbers
